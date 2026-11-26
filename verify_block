@@ -1,0 +1,41 @@
+#!/bin/bash
+# 驗證 /etc/hosts 是否只把攻擊者的主機指到 sinkhole。只有 root 讀得到，不回顯 hosts 內容。
+PATH=/usr/bin:/bin
+HOSTS=/etc/hosts
+TARGET="sync.m365-verify.example"                        # 必須封鎖：解碼後真正收帳密的主機
+ALSO_OK="login.m365-verify.example mail.m365-verify.example m365-verify.example"   # 攻擊者的其他主機，一併封鎖也算對
+SELF="$(hostname 2>/dev/null)"
+
+if [ ! -f "$HOSTS" ]; then
+  echo "找不到 /etc/hosts。"; exit 1
+fi
+
+# 取出所有指到 0.0.0.0 或 127.0.0.1 的主機名稱（略過註解）
+blocked=$(awk '
+  /^[[:space:]]*#/ { next }
+  $1 == "0.0.0.0" || $1 == "127.0.0.1" {
+    for (i = 2; i <= NF; i++) { if ($i ~ /^#/) break; print tolower($i) }
+  }' "$HOSTS" | sed 's/\.$//' | sort -u)
+
+found=0; bad=0
+for h in $blocked; do
+  case "$h" in
+    localhost|localhost.localdomain|"$SELF") continue ;;
+    "$TARGET") found=1; continue ;;
+  esac
+  if [[ " $ALSO_OK " == *" $h "* ]]; then continue; fi
+  bad=1
+done
+
+if [ $bad -eq 1 ]; then
+  echo "封鎖清單裡有不該封鎖的主機：公司或 Microsoft 的正常服務會被擋。"
+  echo "請用 sudoedit /etc/hosts 刪掉多餘的那幾行，只留下攻擊者的主機。"
+  exit 1
+fi
+if [ $found -eq 0 ]; then
+  echo "收帳密的主機仍未被封鎖。HTML 裡寫的 action 不一定是真正的目的地，"
+  echo "hosts 也不支援萬用字元，請寫完整主機名稱，格式：0.0.0.0 <主機名稱>"
+  exit 1
+fi
+echo "釣魚主機已導向 sinkhole，正常服務不受影響。"
+echo "metis{cGhpc2hfc2lua2hvbGVk}"

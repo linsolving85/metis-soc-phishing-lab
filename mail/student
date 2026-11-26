@@ -1,0 +1,67 @@
+From hr@metis-corp.example Thu Nov 26 08:12:40 2026
+Return-Path: <hr@metis-corp.example>
+Received: from mail.metis-corp.example (mail.metis-corp.example [192.0.2.25])
+	by mx.metis-corp.example with ESMTPS id 8F2A1C0031
+	for <student@metis-corp.example>; Thu, 26 Nov 2026 08:12:40 +0800
+Authentication-Results: mx.metis-corp.example;
+	spf=pass smtp.mailfrom=metis-corp.example;
+	dkim=pass header.d=metis-corp.example;
+	dmarc=pass header.from=metis-corp.example
+From: "人資部" <hr@metis-corp.example>
+To: student@metis-corp.example
+Subject: 12 月員工旅遊報名
+Date: Thu, 26 Nov 2026 08:12:38 +0800
+Message-ID: <20261126081238.4411@metis-corp.example>
+Content-Type: text/plain; charset=UTF-8
+
+各位同仁好：
+12 月員工旅遊開始報名，請於 12/5 前到內部入口網站填寫。
+人資部 敬上
+
+From account-security-noreply@accountprotection.microsoft.example Thu Nov 26 08:40:02 2026
+Return-Path: <account-security-noreply@accountprotection.microsoft.example>
+Received: from mail-out.accountprotection.microsoft.example (mail-out.accountprotection.microsoft.example [198.51.100.40])
+	by mx.metis-corp.example with ESMTPS id 3B7D9E0042
+	for <student@metis-corp.example>; Thu, 26 Nov 2026 08:40:02 +0800
+Authentication-Results: mx.metis-corp.example;
+	spf=pass smtp.mailfrom=accountprotection.microsoft.example;
+	dkim=pass header.d=accountprotection.microsoft.example;
+	dmarc=pass header.from=accountprotection.microsoft.example
+From: "Microsoft account team" <account-security-noreply@accountprotection.microsoft.example>
+To: student@metis-corp.example
+Subject: Microsoft account security info was added
+Date: Thu, 26 Nov 2026 08:39:59 +0800
+Message-ID: <MS-7c1e2b90a4@accountprotection.microsoft.example>
+Content-Type: text/plain; charset=UTF-8
+
+The following security info was recently added to the Microsoft account st***@metis-corp.example:
+  Authenticator app
+If this was you, you can safely ignore this email.
+
+From bounce-7731@mail.m365-verify.example Thu Nov 26 09:03:17 2026
+Return-Path: <bounce-7731@mail.m365-verify.example>
+Received: from mail.m365-verify.example (unknown [203.0.113.66])
+	by mx.metis-corp.example with ESMTP id 5C0E4F0057
+	for <student@metis-corp.example>; Thu, 26 Nov 2026 09:03:17 +0800
+Authentication-Results: mx.metis-corp.example;
+	spf=fail (sender IP is 203.0.113.66) smtp.mailfrom=mail.m365-verify.example;
+	dkim=none;
+	dmarc=fail action=none header.from=metis-corp.example
+From: "MetisCorp IT 服務台" <it-helpdesk@metis-corp.example>
+Reply-To: <it-helpdesk@m365-verify.example>
+To: student@metis-corp.example
+Subject: 【緊急】您的密碼將於 24 小時內到期
+Date: Thu, 26 Nov 2026 09:03:15 +0800
+Message-ID: <a81f3c2e.7731@mail.m365-verify.example>
+X-Mailer: MassMailer 4.2
+X-Campaign-ID: metis{aGVhZGVyX3NwZl9mYWls}
+Content-Type: text/html; charset=UTF-8
+
+<html><body>
+<p>親愛的同仁您好：</p>
+<p>您的 Microsoft 365 密碼將於 <b>24 小時內</b>到期，逾期帳號將被停用。</p>
+<p>請立即點擊下方連結驗證帳號以保留密碼：</p>
+<p><a href="https://login.m365-verify.example/owa/?u=student">https://login.microsoftonline.example/</a></p>
+<p>MetisCorp IT 服務台</p>
+</body></html>
+
