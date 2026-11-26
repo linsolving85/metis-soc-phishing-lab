@@ -1,25 +1,18 @@
-【SOC 值班交接】（警衛台交給你的）
+【SOC 值班交接】
 今天早上業務部同事回報，收到一封「密碼即將到期」的信，寄件人顯示是公司 IT 服務台。
-IT 服務台說他們沒有寄過這種信。同事說他好像已經點進去了。
+IT 服務台說他們沒有寄過這種信。同事說他好像已經點進去登入了。
 
 證據：
-  信箱        /var/mail/student（同事轉給你的 3 封信，原始格式）
-  釣魚網頁    ~/evidence/login.html（沙箱點開信中連結後存下的網頁）
+  信箱        /var/mail/student         同事轉給你的 3 封信
+  釣魚網頁    ~/evidence/login.html      沙箱點開信中連結後存下的網頁
 
 任務（每題答案格式都是 metis{...}）：
- 1. 從信件標頭找出哪一封是偽造的
- 2. 從網頁原始碼找出帳密「真正」被送到哪個主機
- 3. 在 /etc/hosts 把那個主機指到 0.0.0.0（sinkhole），再執行 sudo verify_block
+ 1. 找出哪一封信是偽造的
+ 2. 找出帳密「真正」被送到哪個網域
+ 3. 把那個網域封鎖，並回報封鎖的網域
 
 常用指令：
-  less /var/mail/student          逐頁閱讀（q 離開，/ 搜尋）
-  grep -n -i <關鍵字> <檔案>       找出含關鍵字的行與行號
-  echo '<字串>' | base64 -d        解開 base64 編碼
-  getent hosts <主機名稱>          查詢主機名稱目前解析到哪個 IP
-
-本機可用的 sudo 權限（只有這三項）：
-  sudo tee -a /etc/hosts          在 /etc/hosts 結尾附加內容
-  sudoedit /etc/hosts             修改 /etc/hosts（寫錯時用）
-  sudo verify_block               驗證封鎖結果
-
-注意：只能封鎖攻擊者的主機。誤封公司或 Microsoft 的正常網域，會造成全公司無法登入。
+  cat 檔案                    顯示檔案內容
+  grep 關鍵字 檔案             找出含關鍵字的行
+  echo '字串' | base64 -d      解開 base64
+  echo -n '字串' | base64      把字串編成 base64（-n 不能省）
